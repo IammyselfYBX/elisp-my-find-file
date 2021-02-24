@@ -10,6 +10,6 @@
     ;;打开文件
     ;;健壮性检查
     ;;如果是一个不存在的文件,不应该是新建一个而是查询是爱
-    ;;(when (and selected_lines (file-exists-p selected_lines))
-    (find-file selected_lines)
+    (when (and selected_lines (file-exists-p selected_lines))
+    (find-file selected_lines))
     ))
