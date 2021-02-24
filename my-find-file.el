@@ -7,8 +7,9 @@
                -type f                \
                -name '*.*' ")
 	 ;;只想看到文件
+	 ;;这个 . 多余 使用 cdr 去除
 	 (output_cmd (shell-command-to-string cmd))
-	 (lines (split-string output_cmd "[\n\r]+"))
+	 (lines (cdr (split-string output_cmd "[\n\r]+")))
 	 (selected_lines (ivy-read "Find file> " lines))
 	 )  
     ;;打开文件
