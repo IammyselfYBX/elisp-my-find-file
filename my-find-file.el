@@ -11,8 +11,12 @@
                -type f                      \
                -name '*.*' ")
 	 ;;但是打开其他文件默认的文件夹就会改变
-	 ;;简单粗暴
-	 (my-default-directory "~/practure/learn_linux-0.11")
+	 ;;也不能每次都这么去做需要完善
+	 ;;            ——locate-dominating-file来找目录
+	 ;;这里使用 default-directory 的目的是递归调用，
+	 ;; default-directory 每次都会更新自己
+	 ;;假定都有 .git/吧,但是要求默认使用git管理，还好我自己都会使用git
+	 (default-directory (locate-dominating-file default-directory ".git"))
 	 ;;需要放到这里，可能是因为会被重新刷新
 	 
 	 ;;只想看到文件
@@ -24,7 +28,7 @@
 	 (selected_lines
 	  (ivy-read
 	   (format "Find file in %s> "
-		   my-default-directory)
+		   default-directory)
 	           lines)
          ))
     ;;打开文件
