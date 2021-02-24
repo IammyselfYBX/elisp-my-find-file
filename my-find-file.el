@@ -2,7 +2,11 @@
 (require 'ivy) ;;没有的话 use-package 安装
 (defun my-find-file ()
   (interactive)
-  (let* ((cmd "find . -type f -name '*.*'") ;;只想看到文件
+  (let* ((cmd "find . -path '*/.git'  \
+               -prune -o -print       \
+               -type f                \
+               -name '*.*' ")
+	 ;;只想看到文件
 	 (output_cmd (shell-command-to-string cmd))
 	 (lines (split-string output_cmd "[\n\r]+"))
 	 (selected_lines (ivy-read "Find file> " lines))
