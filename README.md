@@ -8,3 +8,5 @@
 ## Required
 [ivy](https://elpa.gnu.org/packages/ivy.html)
 
+## 测试用例
+[Linux 0.11源代码](https://github.com/IammyselfYBX/learn_linux-0.11)
